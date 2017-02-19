@@ -1,0 +1,2 @@
+# LottoAdviser
+Educational project.
