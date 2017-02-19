@@ -18,7 +18,7 @@ namespace LAInfrastructure.Services
         }
         public IList<Number> ComputeNumbers(int top, IEnumerable<Number> numbers)
         {
-            return numbers.OrderByDescending(n => (_factor1 * Convert.ToDouble(n.NotSeen)) / (_factor2 * Convert.ToDouble(n.Occurencies))).Take(top).ToList();
+            return numbers.OrderByDescending(n => _factor1 * Convert.ToDouble(n.NotSeen) * _factor2 * ( 1 / Convert.ToDouble(n.Occurencies))).Take(top).ToList();
         }
     }
 }
