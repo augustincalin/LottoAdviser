@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-3">
+        <p>This is a simple Lotto Adviser which will give you the most 10 probable numbers for Lotto.de</p>
+        <h3>How it works?</h3>
+        <p>A number is most probable to appear if:</p>
+        <ol>
+            <li>It's missing for a long time (<em>NotSeen</em>).</li>
+            <li>It was the least extracted (<em>Occurencies</em>).</li>
+        </ol>
+        <p>The data is taken from <a href="https://www.lotto-hessen.de/pfe/controller/DrawingStatisticsController/showLottoGameCycles?gbn=5&loc=de&jdn=5" target="_blank">here</a> and from <a href="https://www.lotto-hessen.de/pfe/controller/DrawingStatisticsController/showLottoTrends?gbn=5&loc=de&jdn=5" target="_blank">here</a>.</p>
+        <p>The (naive) formula used is:</p>
+        <p>Probability = (Factor1 * NotSeen) / (Factor2 * Occurencies)</p>
+        <p>...where:</p>
+        <ul>
+            <li>Factor1 is a pondering parameter. Initially this is equal with 1.</li>
+            <li>NotSeen is the number of extractions since the ball is missing.</li>
+            <li>Factor2 is a pondering parameter. Initially this is equal with 1.</li>
+            <li>Occurencies is the total number of extractions of that ball since the beginning.</li>
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Number:</th>
+                        <th *ngFor="let number of homeData.topProbable">{{number.number1}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Not seen:</td>
+                        <td *ngFor="let number of homeData.topProbable">{{number.notSeen}}</td>
+                    </tr>
+                    <tr>
+                        <td>Extracted:</td>
+                        <td *ngFor="let number of homeData.topProbable">{{number.occurencies}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
